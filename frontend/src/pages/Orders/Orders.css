@@ -1,0 +1,49 @@
+.main-container{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.orders-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orders-header .menu{
+    display: flex;
+    gap:.5rem;
+}
+
+.main-container p{
+    margin: 0px;
+}
+
+.order-container{
+    width: 100%;
+}
+
+.order-card{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.items-container{
+    display: flex;
+    gap: 20px;
+}
+
+.item-info p{
+    margin: 0px;
+}
+
+.item-image{
+    width: 200px;
+}
+
+.item-image img{
+    width: 100%;
+    height: auto;
+}

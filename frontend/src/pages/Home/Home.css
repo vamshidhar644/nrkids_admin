@@ -1,0 +1,59 @@
+.Main-Container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Home-container{
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    height: fit-content;
+    gap: 16px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.0.2);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.Home-box{
+    width: 400px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--secondary-color);
+    border-radius: 12px;
+    font-size: 24px; 
+    cursor: pointer;
+    transition: .3s;
+}
+
+.Home-box:hover{
+    transform: scale(1.02) ;
+    transition: .3s;
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.logout-container{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.logout{
+    margin: 0px;
+    text-align: right;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.logout:hover{
+    text-decoration: underline;
+}

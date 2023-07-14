@@ -4,6 +4,7 @@ const express = require('express');
 const { default: mongoose } = require('mongoose');
 
 const adminRoutes = require('./route/admin');
+
 // Express app
 const app = express();
 
