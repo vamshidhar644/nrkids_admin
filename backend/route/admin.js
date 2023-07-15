@@ -19,5 +19,6 @@ router.post('/signup', signupUser);
 // Orders
 router.get('/orders', getAllOrders);
 router.get('/order/:userId', getOrders);
+router.put('/orders/:orderId', updateOrder);
 
 module.exports = router;

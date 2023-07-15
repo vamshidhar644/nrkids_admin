@@ -18,31 +18,26 @@ const Items = ({ items }) => {
     }
   }, [Products]);
 
-  if (filteredItems) {
-    console.log(filteredItems);
-  }
   return (
-    <div>
-      <div className="items-container">
-        {items && filteredItems
-          ? items.map((item, i) => {
-              return (
-                <div className="ordered-item" key={i}>
-                  <div className="item-image">
-                    <img src={getImageUrl(filteredItems[i].images[0])} alt="" />
-                  </div>
-                  <div className="item-info">
-                    <p>{filteredItems && filteredItems[i].title}</p>
-                    <p>Description</p>
-                    <p>Quantity - {item.quantity}</p>
-                    <p>Size - {item.size}</p>
-                    <p>Price - {item.price}</p>
-                  </div>
+    <div className="items-container">
+      {items && filteredItems
+        ? items.map((item, i) => {
+            return (
+              <div className="ordered-item" key={i}>
+                <div className="item-image">
+                  <img src={getImageUrl(filteredItems[i].images[0])} alt="" />
                 </div>
-              );
-            })
-          : null}
-      </div>
+                <div className="item-info">
+                  <p>{filteredItems && filteredItems[i].title}</p>
+                  <p>Description</p>
+                  <p>Quantity: {item.quantity}</p>
+                  <p>Size: {item.size}</p>
+                  <p>Price: ₹ {item.price}</p>
+                </div>
+              </div>
+            );
+          })
+        : null}
     </div>
   );
 };
