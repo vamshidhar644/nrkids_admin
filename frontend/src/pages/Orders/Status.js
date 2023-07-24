@@ -10,13 +10,19 @@ const Status = ({ OrderStatus, orderId, deliveryCost }) => {
   const status = [
     { title: 'Yet to confirm' },
     { title: 'Confirm Order' },
-    { title: 'Cancel Order' },
+    { title: 'Reject Order' },
     { title: 'Delivered' },
+    { title: 'Paid' },
   ];
+
+  const handleSubmit = async () => {
+    await updateOrder(orderId, shippingCost, CheckStatus);
+  };
 
   return (
     <div className="status-container">
-      <div className="status-box delivery-cost">
+      <div className="status-box">
+        <p>Shipping Cost</p>
         <input
           type="number"
           placeholder="Shipping Cost"
@@ -53,10 +59,7 @@ const Status = ({ OrderStatus, orderId, deliveryCost }) => {
           : null}
       </div>
 
-      <div
-        className="status-box submit"
-        onClick={() => updateOrder(orderId, shippingCost, CheckStatus)}
-      >
+      <div className="status-box submit" onClick={handleSubmit}>
         <p>Submit</p>
       </div>
     </div>

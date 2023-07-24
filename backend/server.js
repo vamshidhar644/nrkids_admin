@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const { default: mongoose } = require('mongoose');
+const cors = require('cors');
 
 const adminRoutes = require('./route/admin');
 
@@ -11,12 +12,13 @@ const app = express();
 // middleware
 app.use(express.json());
 
+app.use(cors());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
-
-// routes
+ 
+// routes 
 // app.use('/api/user', userRoutes);
 app.use('/api/admin', adminRoutes);
 

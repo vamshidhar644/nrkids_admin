@@ -3,7 +3,7 @@ import './Login.css';
 import { useLogin } from '../../hooks/useLogin';
 
 const Login = () => {
-  const { login } = useLogin();
+  const { login, loginerror } = useLogin();
   const [login_email, setLoginEmail] = useState('');
   const [login_password, setLoginPassword] = useState('');
 
@@ -19,7 +19,7 @@ const Login = () => {
   return (
     <div className="Login-Container">
       <form className="form" action="">
-        <p className="form-title">Sign in to your account</p>
+        <p className="form-title">Sign in</p>
         <div className="input-container">
           <input
             type="email"
@@ -40,6 +40,7 @@ const Login = () => {
         <button type="submit" className="submit" onClick={handleLogin}>
           Sign in
         </button>
+        {loginerror && loginerror}
       </form>
     </div>
   );

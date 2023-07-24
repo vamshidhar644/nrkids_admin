@@ -1,0 +1,10 @@
+.app-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.main-content{
+    width: calc(100vw - 250px);
+    min-height: 100vh;
+}

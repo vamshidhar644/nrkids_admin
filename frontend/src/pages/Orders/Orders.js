@@ -26,10 +26,6 @@ const Orders = () => {
     <div className="main-container">
       <div className="orders-header">
         <h2>Orders </h2>
-        <div className="menu">
-          <Link to="/">Home</Link>
-          <button onClick={handleClick}>Logout</button>
-        </div>
       </div>
       <div className="order-container">
         {orders &&
@@ -51,35 +47,31 @@ const Orders = () => {
             );
 
             return (
-              <div key={i}>
-                <div className="order-card">
-                  <Items items={order.items} />
-                  <div className="order-details">
-                    <h3>#{order._id}</h3>
-                    <h5>{formattedDate}</h5>
-                    <h2>{order.orderedName}</h2>
-                    <p>{order.orderedEmail}</p>
-                    <p>{order.orderedAddress}</p>
-                    <p>
-                      {order.orderedLocality}-
-                      <span>{order.orderedPincode}</span>
-                    </p>
-                    <p>{order.orderedState}</p>
-                    <p className="mt-2">Mobile {order.orderedMobile}</p>
-                    <p>Shipping Cost: ₹ {order.shippingCost}/-</p>
-                    <p>Subtotal: ₹ {order.totalAmount}/-</p>
+              <div className="order-card" key={i}>
+                <Items items={order.items} />
+                <div className="order-details">
+                  <h3>#{order._id}</h3>
+                  <h5>{formattedDate}</h5>
+                  <h2>{order.orderedName}</h2>
+                  <p>{order.orderedEmail}</p>
+                  <p>{order.orderedAddress}</p>
+                  <p>
+                    {order.orderedLocality}-<span>{order.orderedPincode}</span>
+                  </p>
+                  <p>{order.orderedState}</p>
+                  <p className="mt-2">Mobile {order.orderedMobile}</p>
+                  <p>Shipping Cost: ₹ {order.shippingCost}/-</p>
+                  <p>Subtotal: ₹ {order.totalAmount}/-</p>
 
-                    <h2>
-                      Total Amount: ₹ {order.shippingCost + order.totalAmount}/-
-                    </h2>
-                  </div>
-                  <Status
-                    orderId={order._id}
-                    OrderStatus={order.status}
-                    deliveryCost={order.shippingCost}
-                  />
+                  <h2>
+                    Total Amount: ₹ {order.shippingCost + order.totalAmount}/-
+                  </h2>
                 </div>
-                <hr />
+                <Status
+                  orderId={order._id}
+                  OrderStatus={order.status}
+                  deliveryCost={order.shippingCost}
+                />
               </div>
             );
           })}
