@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 
 const FilterSanity = () => {
   const [filteredItems, setFilteredItems] = useState();
@@ -13,7 +13,7 @@ const FilterSanity = () => {
         });
       }
     });
-    setFilteredItems(sanitycart);
+    console.log(sanitycart);
   };
   return { filtersanity, filteredItems };
 };

@@ -41,7 +41,10 @@ const signupUser = async (req, res) => {
   }
 };
 
+const changepass = async (req, res) => {};
+
 module.exports = {
   signupUser,
   loginUser,
+  changepass,
 };

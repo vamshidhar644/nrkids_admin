@@ -14,56 +14,30 @@ const Dashboard = () => {
 
   const [path, setPath] = useState('home');
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const handleToggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
   return (
     <div className="app-container">
-      <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
-        <div className="menu-icon" onClick={handleToggleSidebar}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+      <div className="sidebar">
         <ul className="list-unstyled">
           <li
-            onClick={() => {
-              setPath('home');
-              setIsSidebarOpen(false);
-            }}
+            onClick={() => setPath('home')}
             className={`li ${path === 'home' ? 'active' : ''}`}
           >
             <p>Home</p>
           </li>
           <li
-            onClick={() => {
-              setPath('orders');
-              setIsSidebarOpen(false);
-            }}
+            onClick={() => setPath('orders')}
             className={`li ${path === 'orders' ? 'active' : ''}`}
           >
             <p>Orders</p>
           </li>
           <li
-            onClick={() => {
-              setPath('profile');
-              setIsSidebarOpen(false);
-            }}
+            onClick={() => setPath('profile')}
             className={`li ${path === 'profile' ? 'active' : ''}`}
           >
             <p>Change Password</p>
           </li>
-          <li
-            onClick={() => {
-              setIsSidebarOpen(false);
-              handleClick(); // Assuming handleClick is the function for Logout
-            }}
-            className="li"
-          >
-            <p>Logout</p>
+          <li onClick={handleClick} className="li">
+            <p to="/login">Logout</p>
           </li>
         </ul>
       </div>

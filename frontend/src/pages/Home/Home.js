@@ -13,10 +13,24 @@ const Home = () => {
     }
   }, [user]);
 
+  function countStatusElements(orders) {
+    const statusCounts = {};
+    if (orders) {
+      orders.forEach((element) => {
+        const status = element.status;
+        statusCounts[status] = (statusCounts[status] || 0) + 1;
+      });
+    }
+
+    return statusCounts;
+  }
+
+  const result = countStatusElements(orders);
+
   return (
     <div className="home__main">
-      <div className="home_content__main">
-        <div className='orders__header'>
+      <div className="home_content__main" style={{ width: '50%' }}>
+        <div className="orders__header">
           <strong>Orders Data</strong>
         </div>
         <hr />
@@ -26,23 +40,28 @@ const Home = () => {
         </div>
         <hr />
         <div className="order__row">
+          <h4>Yet to Confirm</h4>
+          <h5>{result['Yet to confirm']}</h5>
+        </div>
+        <hr />
+        <div className="order__row">
           <h4>Orders Confirmed</h4>
-          <h5>12</h5>
+          <h5>{result['Confirm Order']}</h5>
         </div>
         <hr />
         <div className="order__row">
           <h4>Orders Rejected</h4>
-          <h5>4</h5>
+          <h5>{result['Reject Order']}</h5>
         </div>
         <hr />
         <div className="order__row">
           <h4>Orders Delivered</h4>
-          <h5>10</h5>
+          <h5>{result['Delivered']}</h5>
         </div>
         <hr />
         <div className="order__row">
           <h4>Orders Paid</h4>
-          <h5>6</h5>
+          <h5>{result['Paid']}</h5>
         </div>
         <hr />
       </div>

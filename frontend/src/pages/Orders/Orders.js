@@ -34,6 +34,21 @@ const Orders = () => {
     }
   };
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (event) => {
+    const searchTerm = event.target.value;
+    setSearchTerm(searchTerm);
+
+    if (orders) {
+      const filteredProducts = orders.filter((product) =>
+        product._id.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      setFilteredOrder(filteredProducts);
+    }
+  };
+
   const handlefetch = () => {
     fetchOrders();
   };
@@ -54,8 +69,16 @@ const Orders = () => {
               </button>
             );
           })}
-          <input type="text" placeholder="Order ID" />
-          <input type="date" className="custom-date-input" />
+          <input
+            id="input-box"
+            name="item_list"
+            type="text"
+            list="Input-box"
+            className="inputBox"
+            placeholder="Search By Order ID"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
         </div>
       </div>
       <div className="orders__container">

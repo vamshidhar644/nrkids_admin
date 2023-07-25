@@ -1,12 +1,11 @@
 const express = require('express');
 
 // controller functions
-const { signupUser, loginUser } = require('../controller/adminController');
+const { signupUser, loginUser, changepass } = require('../controller/adminController');
 
 const {
   getAllOrders,
   getOrders,
-  deleteOrder,
   updateOrder,
 } = require('../controller/OrdersController');
 
@@ -16,6 +15,7 @@ const router = express.Router();
 // login / signup route
 router.post('/login', loginUser);
 router.post('/signup', signupUser);
+router.post('/changepass', requireAuth, changepass);
 
 // Orders
 router.get('/orders', requireAuth, getAllOrders);
