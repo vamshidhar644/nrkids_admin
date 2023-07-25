@@ -1,43 +1,24 @@
-import React, { useEffect } from 'react';
-import { FetchSanity } from '../../helpers/FetchSanity';
-import FilterSanity from '../../helpers/FilterSanity';
-import FetchImageUrl from '../../helpers/FetchImageUrl';
+import React from 'react';
 
 const Items = ({ items }) => {
-  const { fetchAllProducts, Products } = FetchSanity();
-  const { filtersanity, filteredItems } = FilterSanity();
-  const { getImageUrl } = FetchImageUrl();
-
-  useEffect(() => {
-    fetchAllProducts();
-  }, []);
-
-  useEffect(() => {
-    if (items && Products) {
-      filtersanity(items, Products);
-    }
-  }, [Products]);
-
   return (
     <div className="items-container">
-      {items && filteredItems
-        ? items.map((item, i) => {
-            return (
-              <div className="ordered-item" key={i}>
-                <div className="item-image">
-                  <img src={getImageUrl(filteredItems[i].images[0])} alt="" />
-                </div>
-                <div className="item-info">
-                  <p>{filteredItems && filteredItems[i].title}</p>
-                  <p>Description</p>
-                  <p>Quantity: {item.quantity}</p>
-                  <p>Size: {item.size}</p>
-                  <p>Price: ₹ {item.price}</p>
-                </div>
+      {items &&
+        items.map((item, i) => {
+          console.log(item);
+          return (
+            <div className="ordered-item" key={i}>
+              <div className="item-info">
+                <p>
+                  id - <b>{item.productId}</b>
+                </p>
+                <p>Quantity: {items[i].quantity}</p>
+                <p>Size: {items[i].size}</p>
+                <p>Price: ₹ {items[i].price}.00</p>
               </div>
-            );
-          })
-        : null}
+            </div>
+          );
+        })}
     </div>
   );
 };

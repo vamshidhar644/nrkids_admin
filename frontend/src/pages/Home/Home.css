@@ -9,12 +9,9 @@
     align-items: center;
 }
 
-.home_content__main{
-    width: 50%;
-}
 .orders__header{
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
     color: #2f4858;
     font-family: 'Poppins';
 }

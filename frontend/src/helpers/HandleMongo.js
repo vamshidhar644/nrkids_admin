@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { UseAuthContext } from '../hooks/useAuthContext';
-import axios from 'axios';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const HandleMongo = () => {
   const { user } = UseAuthContext();
@@ -28,7 +30,6 @@ export const HandleMongo = () => {
   };
 
   const updateOrder = async (orderId, shippingCost, status) => {
-    console.log(orderId, shippingCost, status);
     const response = await fetch(`${BACKEND_URL}/api/admin/orders/${orderId}`, {
       method: 'PUT',
       headers: {
@@ -37,15 +38,29 @@ export const HandleMongo = () => {
       },
       body: JSON.stringify({ shippingCost, status }),
     });
-    // const json = await response.json();
+    const json = await response.json();
 
     if (!response.ok) {
-      console.log('something wrong');
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
-      // save the user to local storage
-      // navigate('/your-bag');
-      // alert('Updated');
+      toast.success('Updated', {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 

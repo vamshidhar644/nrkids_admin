@@ -5,14 +5,15 @@
     justify-content: center;
 }
 
-.orders-header{
+.orders__header{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
-.orders-header h2{
-    margin-left: 12px;
-
+.orders__header h2{
+    margin: 0px;
+    margin-left: 2rem;
 }
 
 .main-container p,  .main-container h5, .main-container h3{
@@ -20,30 +21,46 @@
 }
 
 .order-details{
-    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 24px;
+}
+.order-details h2{
+    margin-bottom: 0px;
+}
+.userid{
+    font-weight: 600;
 }
 
 .order-card{
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid;
+    padding-top: 2rem;
+    padding-bottom: 1.6rem;
+}
+
+.orders__container{
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .items-container{
-    display: flex;
+   display: flex;   
+   flex-direction: column;
+   flex-wrap: wrap;
+   max-height: 24rem;
     gap: 20px;
     padding: 0px 24px;
-    width: 32rem;
+    width: 20rem;
     max-width: 42rem;
     overflow-x: scroll;
 }
 
 
 .items-container::-webkit-scrollbar {
-    width: 0.5em; /* Set the width of the scrollbar */
+    width: 0.5em; 
   }
   
   .items-container::-webkit-scrollbar-track {
@@ -59,7 +76,7 @@
 }
 
 .item-image{
-    width: 200px;
+    width: 160px;
 }
 
 .item-image img{
@@ -71,7 +88,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 30%;
 }
 
 .status-box{
@@ -83,14 +99,45 @@
 }
 .status-box p{
     margin: 0px;
-    width: 100%;
     text-align: left;
 }
 
 .status-box input{
-    height: 100%;
+    width: 100%;
     font-size: 16px;
     padding: 6px;
     margin-top: 8px;
-    width: 100%;
+}
+
+.order__summary p{
+    display: flex;
+    white-space: nowrap;
+    justify-content: space-between;
+}
+.ordered-item{
+    min-width: fit-content;
+}
+
+
+/* Filter Buttons */
+
+.filter__buttons{
+    padding: 1.2rem 2rem;
+    display: flex;
+    gap:.5rem;
+}
+
+.filter__buttons button{
+    padding: 12px 24px;
+    min-width: 120px;
+}
+
+.filter__buttons input{
+    min-width: 140px;
+}
+
+.filter__buttons .active{
+    border: none;
+    background-color: var(--secondary-color);
+    color: aliceblue;
 }

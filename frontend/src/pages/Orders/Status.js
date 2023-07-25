@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Status.css';
 import { HandleMongo } from '../../helpers/HandleMongo';
 
-const Status = ({ OrderStatus, orderId, deliveryCost }) => {
+const Status = ({ OrderStatus, orderId, deliveryCost, onSubmit }) => {
   const { updateOrder } = HandleMongo();
   const [shippingCost, setShippingCost] = useState(0);
-  const [CheckStatus, setCheck] = useState(OrderStatus);
+  const [CheckStatus, setCheck] = useState();
+  const [checkedIndex, setIndex] = useState();
 
   const status = [
     { title: 'Yet to confirm' },
@@ -15,8 +16,22 @@ const Status = ({ OrderStatus, orderId, deliveryCost }) => {
     { title: 'Paid' },
   ];
 
+  useEffect(() => {
+    const checkedIndex = status.findIndex((item) => item.title === OrderStatus);
+    setIndex(checkedIndex);
+  }, [OrderStatus]);
+
   const handleSubmit = async () => {
     await updateOrder(orderId, shippingCost, CheckStatus);
+    onSubmit();
+  };
+
+  const handleChange = (i) => {
+    setCheck(status[i].title);
+    const checkedIndex = status.findIndex(
+      (item) => item.title === status[i].title
+    );
+    setIndex(checkedIndex);
   };
 
   return (
@@ -31,15 +46,10 @@ const Status = ({ OrderStatus, orderId, deliveryCost }) => {
         />
       </div>
 
+      {OrderStatus}
       <div className="radio-inputs">
         {status
           ? status.map((statuss, i) => {
-              const shouldCheckRadio = true; // Replace with your condition
-
-              const checkedIndex = status.findIndex(
-                (item) => shouldCheckRadio && item.title === CheckStatus
-              );
-
               return (
                 <label key={i}>
                   <input
@@ -47,7 +57,7 @@ const Status = ({ OrderStatus, orderId, deliveryCost }) => {
                     type="radio"
                     id={status.title}
                     checked={i === checkedIndex}
-                    onChange={() => setCheck(status[i].title)}
+                    onChange={() => handleChange(i)}
                   />
                   <span className="radio-tile">
                     <span className="radio-icon"></span>

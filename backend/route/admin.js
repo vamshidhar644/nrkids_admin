@@ -18,8 +18,8 @@ router.post('/login', loginUser);
 router.post('/signup', signupUser);
 
 // Orders
-router.get('/orders', getAllOrders);
-router.get('/order/:userId', getOrders);
-router.put('/orders/:orderId', updateOrder);
+router.get('/orders', requireAuth, getAllOrders);
+router.get('/order/:userId', requireAuth, getOrders);
+router.put('/orders/:orderId', requireAuth, updateOrder);
 
 module.exports = router;

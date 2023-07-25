@@ -7,8 +7,6 @@ const Home = () => {
   const { user } = UseAuthContext();
   const { fetchOrders, orders } = HandleMongo();
 
-  console.log(orders);
-
   useEffect(() => {
     if (user) {
       fetchOrders();
