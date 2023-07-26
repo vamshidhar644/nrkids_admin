@@ -1,7 +1,11 @@
 const express = require('express');
 
 // controller functions
-const { signupUser, loginUser, changepass } = require('../controller/adminController');
+const {
+  signupUser,
+  loginUser,
+  changepass,
+} = require('../controller/adminController');
 
 const {
   getAllOrders,
@@ -15,7 +19,7 @@ const router = express.Router();
 // login / signup route
 router.post('/login', loginUser);
 router.post('/signup', signupUser);
-router.post('/changepass', requireAuth, changepass);
+router.post('/changepass/:adminId', requireAuth, changepass);
 
 // Orders
 router.get('/orders', requireAuth, getAllOrders);

@@ -1,5 +1,6 @@
 const User = require('../model/adminModel');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '3d' });
@@ -41,7 +42,48 @@ const signupUser = async (req, res) => {
   }
 };
 
-const changepass = async (req, res) => {};
+const changepass = async (req, res) => {
+  const { adminId } = req.params;
+  const { oldpassword, newpassword } = req.body;
+
+  // console.log(adminId, oldpassword, newpassword);
+  const user = await User.findById(adminId);
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  const passWord = user.password;
+
+  const match = await bcrypt.compare(oldpassword, passWord);
+
+  if (!match) {
+    return res.status(404).json({ message: 'Incorrect password' });
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(newpassword, salt);
+
+  try {
+    // Find the document by ID and update the specific field
+    const updatedItem = await User.findByIdAndUpdate(
+      adminId,
+      { $set: { password: hash } },
+      {
+        new: true, // Return the updated document after the update
+      }
+    );
+
+    if (!updatedItem) {
+      return res.status(404).json({ message: 'Item not found' });
+    }
+
+    return res.status(200).json(updatedItem);
+  } catch (error) {
+    console.error('Error updating item:', error);
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
 
 module.exports = {
   signupUser,

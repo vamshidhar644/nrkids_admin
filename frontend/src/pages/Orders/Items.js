@@ -5,7 +5,6 @@ const Items = ({ items }) => {
     <div className="items-container">
       {items &&
         items.map((item, i) => {
-          console.log(item);
           return (
             <div className="ordered-item" key={i}>
               <div className="item-info">

@@ -11,6 +11,21 @@ const Orders = () => {
   const { fetchOrders, orders } = HandleMongo();
   const [statusss, setStatus] = useState();
   const [filteredOrders, setFilteredOrder] = useState([]);
+
+  function countStatusElements(orders) {
+    const statusCounts = {};
+    if (orders) {
+      orders.forEach((element) => {
+        const status = element.status;
+        statusCounts[status] = (statusCounts[status] || 0) + 1;
+      });
+    }
+
+    return statusCounts;
+  }
+
+  const result = countStatusElements(orders);
+
   const buttons = [
     { title: 'Yet to confirm' },
     { title: 'Confirm Order' },
@@ -23,7 +38,13 @@ const Orders = () => {
     if (user) {
       fetchOrders();
     }
-  }, [statusss]);
+  }, []);
+
+  useEffect(() => {
+    if (orders) {
+      setFilteredOrder(orders);
+    }
+  }, []);
 
   const filter = (stat) => {
     setStatus(stat);
@@ -65,20 +86,21 @@ const Orders = () => {
                 key={i}
                 className={`${statusss === buttons.title ? 'active' : ''}`}
               >
-                {buttons.title}
+                {buttons.title}&nbsp;
+                <b>({result[buttons.title]})</b>
               </button>
             );
           })}
           <input
             id="input-box"
             name="item_list"
-            type="text"
+            type="number"
             list="Input-box"
-            className="inputBox"
             placeholder="Search By Order ID"
             value={searchTerm}
             onChange={handleSearch}
           />
+          {searchTerm && <p>{filteredOrders.length} Results</p>}
         </div>
       </div>
       <div className="orders__container">

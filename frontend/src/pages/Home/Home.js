@@ -36,7 +36,7 @@ const Home = () => {
         <hr />
         <div className="order__row">
           <b>Orders Placed</b>
-          <b>32</b>
+          <b>{orders && orders.length}</b>
         </div>
         <hr />
         <div className="order__row">

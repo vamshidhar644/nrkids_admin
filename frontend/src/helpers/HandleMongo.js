@@ -64,9 +64,49 @@ export const HandleMongo = () => {
     }
   };
 
+  const updatePassword = async (oldpassword, newpassword) => {
+    console.log('update password', user._id, oldpassword, newpassword);
+    const response = await fetch(
+      `${BACKEND_URL}/api/admin/changepass/${user._id}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({ oldpassword, newpassword }),
+      }
+    );
+    const json = await response.json();
+
+    if (!response.ok) {
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    if (response.ok) {
+      toast.success('Password Updated', {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   return {
     fetchOrders,
     orders,
     updateOrder,
+    updatePassword,
   };
 };

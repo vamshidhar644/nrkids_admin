@@ -2,20 +2,27 @@ import { useState } from 'react';
 
 const FilterSanity = () => {
   const [filteredItems, setFilteredItems] = useState();
-  const filtersanity = (items, Products) => {
+  const [cartExist, setCartExist] = useState(null);
+
+  const filtersanity = (mongoItems, sanityItems) => {
     const sanitycart = [];
-    items.forEach((Mitem) => {
-      if (Products) {
-        Products.forEach((Sitem) => {
-          if (Mitem.productId === Sitem.productId) {
-            sanitycart.push(Sitem);
-          }
-        });
-      }
-    });
-    console.log(sanitycart);
+    if (mongoItems) {
+      setCartExist(mongoItems.length);
+      mongoItems.forEach((Mitem) => {
+        if (sanityItems) {
+          sanityItems.forEach((Sitem) => {
+            if (Mitem.productId === Sitem.productId) {
+              sanitycart.push(Sitem);
+            }
+          });
+        }
+      });
+    }
+    if (sanitycart) {
+      setFilteredItems(sanitycart);
+    }
   };
-  return { filtersanity, filteredItems };
+  return { filtersanity, filteredItems, cartExist };
 };
 
 export default FilterSanity;

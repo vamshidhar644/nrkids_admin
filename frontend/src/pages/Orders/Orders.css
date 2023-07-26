@@ -144,3 +144,7 @@
     background-color: var(--secondary-color);
     color: aliceblue;
 }
+.filter__buttons p{
+    font-size: 1.4rem;
+    margin: 0px;
+}
