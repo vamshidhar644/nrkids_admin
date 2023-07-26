@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/"
+            path="/" 
             element={user ? <Dashboard /> : <Navigate to="/login" />}
           />
           <Route
