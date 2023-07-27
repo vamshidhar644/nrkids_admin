@@ -17,8 +17,8 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
- 
-// routes 
+
+// routes
 // app.use('/api/user', userRoutes);
 app.use('/api/admin', adminRoutes);
 
@@ -26,7 +26,9 @@ mongoose.set('strictQuery', false);
 
 // connect to DB
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(
+    'mongodb+srv://nrkids_user:nrkids@nrkids.iny9tbs.mongodb.net/?retryWrites=true&w=majority'
+  )
   .then(() => {
     // Listen for request
     app.listen(process.env.PORT, () => {
