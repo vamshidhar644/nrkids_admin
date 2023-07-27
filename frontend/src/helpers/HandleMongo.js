@@ -80,7 +80,7 @@ export const HandleMongo = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      toast.error(`${json.error}`, {
+      toast.error(`${json.message}`, {
         position: 'bottom-center',
         autoClose: 1000, // 2 seconds
         hideProgressBar: false,

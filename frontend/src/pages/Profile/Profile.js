@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { HandleMongo } from '../../helpers/HandleMongo';
 import './Profile.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ChangePassword = ({}) => {
   const { updatePassword } = HandleMongo();
@@ -9,16 +11,21 @@ const ChangePassword = ({}) => {
   const [newpassword, setNewpassword] = useState();
   const [re_password, setRepassword] = useState();
 
-  const [error, setError] = useState();
-
   const handleUpdate = (e) => {
     e.preventDefault();
     // update password logic here...
     if (newpassword !== re_password) {
-      setError('Not matched');
+      toast.error('Retype Password correctly', {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
       updatePassword(oldpassword, newpassword);
-      setError('matched');
     }
   };
 

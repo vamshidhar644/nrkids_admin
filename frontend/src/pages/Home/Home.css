@@ -10,10 +10,13 @@
 }
 
 .orders__header{
-    text-align: center;
-    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
     color: #2f4858;
     font-family: 'Poppins';
+}
+.orders__header h2{
+    font-size: 3rem;
 }
 .order__row{
     display: flex;
