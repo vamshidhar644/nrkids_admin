@@ -8,8 +8,8 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = UseAuthContext();
 
-  // const BACKEND_URL = process.env.BACKEND_URL;
-  const BACKEND_URL = 'http://localhost:4001';
+  const BACKEND_URL = 'https://nrkids-admin-backend.onrender.com';
+  // const BACKEND_URL = 'http://localhost:4001';
 
   const login = async (email, password) => {
     setIsLoading(true);
