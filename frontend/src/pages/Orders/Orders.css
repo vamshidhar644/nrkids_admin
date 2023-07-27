@@ -1,64 +1,24 @@
 .main-container{
-    padding: 16px;
+    padding: 0px 16px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-.orders__header{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-}
 .orders__header h2{
     margin: 0px;
-    margin-left: 2rem;
 }
 
 .main-container p,  .main-container h5, .main-container h3{
     margin: 0px;
 }
 
-.order-details{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.order-details h2{
-    margin-bottom: 0px;
-}
 .userid{
     font-weight: 600;
-}
-
-.order-card{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid;
-    padding-top: 2rem;
-    padding-bottom: 1.6rem;
-}
-
-.orders__container{
-    display: flex;
-    flex-direction: column-reverse;
+    margin-bottom: 0.83rem !important;
 }
 
 .items-container{
-   display: flex;   
-   flex-direction: column;
-   flex-wrap: wrap;
-   max-height: 24rem;
-    gap: 20px;
-    padding: 0px 24px;
-    width: 20rem;
-    max-width: 42rem;
     overflow-x: scroll;
-}
-.inputBox{
-    width: 20rem;
 }
 
 .items-container::-webkit-scrollbar {
@@ -86,65 +46,34 @@
     height: auto;
 }
 
-.status-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 .status-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 12px 0px;
-}
-.status-box p{
-    margin: 0px;
-    text-align: left;
 }
 
 .status-box input{
-    width: 100%;
     font-size: 16px;
-    padding: 6px;
-    margin-top: 8px;
+    padding: 8px;
 }
-
-.order__summary p{
-    display: flex;
-    white-space: nowrap;
-    justify-content: space-between;
-}
-.ordered-item{
-    min-width: fit-content;
-}
-
 
 /* Filter Buttons */
 
 .filter__buttons{
-    padding: 2rem;
+    padding: 2rem 0px;
     display: flex;
-    width: 100%;
     gap:.5rem;
 }
 
 .filter__buttons button{
     padding: 12px 24px;
-    min-width: 120px;
+    min-width: 10rem;
 }
 
 .filter__buttons input{
-    min-width: 140px;
+    min-width: 10rem;
 }
 
 .filter__buttons .active{
     border: none;
     background-color: var(--secondary-color);
     color: aliceblue;
-}
-.filter__buttons p{
-    font-size: 1.4rem;
-    margin: 0px;
 }

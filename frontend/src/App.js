@@ -20,8 +20,6 @@ function App() {
             path="/login"
             element={!user ? <Login /> : <Navigate to="/" />}
           />
-
-          {/* <Route path="/orders" element={<Orders />} /> */}
         </Routes>
         <ToastContainer />
       </BrowserRouter>

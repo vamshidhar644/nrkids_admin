@@ -35,7 +35,13 @@ const Status = ({ OrderStatus, orderId, deliveryCost, onSubmit }) => {
   };
 
   return (
-    <div className="status-container">
+    <div>
+      <h4
+        style={{ marginBlockStart: '1em', marginTop: '0px', fontWeight: '600' }}
+      >
+        Order Status
+      </h4>
+      <hr />
       <div className="status-box">
         <p>Shipping Cost</p>
         <input
@@ -45,8 +51,6 @@ const Status = ({ OrderStatus, orderId, deliveryCost, onSubmit }) => {
           onChange={(e) => setShippingCost(e.target.value)}
         />
       </div>
-
-      {OrderStatus}
       <div className="radio-inputs">
         {status
           ? status.map((statuss, i) => {

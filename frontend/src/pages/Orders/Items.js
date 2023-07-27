@@ -1,23 +1,32 @@
 import React from 'react';
 
-const Items = ({ items }) => {
+const Items = ({ orderdata }) => {
   return (
-    <div className="items-container">
-      {items &&
-        items.map((item, i) => {
-          return (
-            <div className="ordered-item" key={i}>
-              <div className="item-info">
-                <p>
-                  id - <b>{item.productId}</b>
-                </p>
-                <p>Quantity: {items[i].quantity}</p>
-                <p>Size: {items[i].size}</p>
-                <p>Price: ₹ {items[i].price}.00</p>
-              </div>
-            </div>
-          );
-        })}
+    <div>
+      <h4
+        style={{ marginBlockStart: '1em', marginTop: '0px', fontWeight: '600' }}
+      >
+        Products
+      </h4>
+      <hr />
+      <div className="items-container">
+        {orderdata.items
+          ? orderdata.items.map((item, i) => {
+              return (
+                <div>
+                  <div className="item-info">
+                    <p>
+                      ID: <b>{item.productId}</b>
+                    </p>
+                    <p>Size: {item.size}</p>
+                    <p>Qty: {item.quantity}</p>
+                    <p>₹ {item.price}.00</p>
+                  </div>
+                </div>
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 };

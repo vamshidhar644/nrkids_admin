@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { HandleMongo } from '../../helpers/HandleMongo';
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import './Orders.css';
-import Status from './Status';
-import Items from './Items';
+import './OrderDetails.css';
 import OrderDetails from './OrderDetails';
 
 const Orders = () => {
@@ -37,12 +36,6 @@ const Orders = () => {
   useEffect(() => {
     if (user) {
       fetchOrders();
-    }
-  }, []);
-
-  useEffect(() => {
-    if (orders) {
-      setFilteredOrder(orders);
     }
   }, []);
 
@@ -103,23 +96,7 @@ const Orders = () => {
           {searchTerm && <p>{filteredOrders.length} Results</p>}
         </div>
       </div>
-      <div className="orders__container">
-        {filteredOrders &&
-          filteredOrders.map((order, i) => {
-            return (
-              <div className="order-card" key={i}>
-                <Items items={order.items} />
-                <OrderDetails order={order} />
-                <Status
-                  orderId={order._id}
-                  onSubmit={handlefetch}
-                  OrderStatus={order.status}
-                  deliveryCost={order.shippingCost}
-                />
-              </div>
-            );
-          })}
-      </div>
+      <OrderDetails filteredOrders={filteredOrders} handlefetch={handlefetch} />
     </div>
   );
 };
