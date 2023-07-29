@@ -26,9 +26,7 @@ mongoose.set('strictQuery', false);
 
 // connect to DB
 mongoose
-  .connect(
-    'mongodb+srv://nrkids_user:nrkids@nrkids.iny9tbs.mongodb.net/?retryWrites=true&w=majority'
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => {
     // Listen for request
     app.listen(process.env.PORT, () => {
