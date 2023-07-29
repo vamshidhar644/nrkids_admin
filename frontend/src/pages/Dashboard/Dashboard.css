@@ -1,10 +1,34 @@
 .app-container{
     display: flex;
-    justify-content: flex-end;
     align-items: center;
 }
-
+.app__header{
+    display: none !important;
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    color: aliceblue;
+    padding: 8px;
+}
 .main-content{
     width: calc(100vw - 280px);
-    min-height: 100vh;
 }
+#ham-menu{
+    padding: 12px;
+    font-size: 1.8rem;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .app-container{
+        min-height: fit-content;
+        flex-direction: column;
+        justify-content: flex-start !important;
+    }
+    .app__header{
+        display: block !important;
+    }
+}
+

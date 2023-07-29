@@ -29,11 +29,11 @@ const Home = () => {
 
   return (
     <div className="home__main">
-      <div className="home_content__main" style={{ width: '50%' }}>
-        <div className="orders__header">
-          <strong>Orders Data</strong>
-        </div>
-        <hr />
+      <div className="orders__header">
+        <strong>Orders Data</strong>
+      </div>
+      <hr />
+      <div className="home_content__main" style={{ width: '80%' }}>
         <div className="order__row">
           <b>Orders Placed</b>
           <b>{orders && orders.length}</b>

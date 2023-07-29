@@ -1,46 +1,76 @@
 /* Sidebar styling */
 .sidebar {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #2f4858; /* You can use your preferred color */
-    padding-top: 20px;
-  }
-  
-  /* Sidebar links */
-  .sidebar ul {
-    padding: 0;
-  }
-  
-  .sidebar .li {
-    list-style-type: none;
-    padding: 10px;
-    
-  }
-  
-  .sidebar .li p {
-    color: #ddada1;
-    text-decoration: none;
-    display: block;
-    letter-spacing: 2px;
-    padding: 10px;
-    margin: 0px;
-    transition: 0.2s;
-    cursor: pointer;
-  }
-  
-  .sidebar .li p:hover {
-    background-color: #a5796d; /* Hover background color */
-    color: #2f4858;
-    font-weight: 700;
-  }
-  
-.active{
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #2f4858;
+}
+
+/* Sidebar links */
+.sidebar ul {
+  padding: 0;
+}
+
+.sidebar .li {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.sidebar .li p {
+  color: #ddada1;
+  text-decoration: none;
+  display: block;
+  letter-spacing: 2px;
+  padding: 10px;
+  margin: 0px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.sidebar .li p:hover {
+  background-color: #a5796d; /* Hover background color */
+  color: #2f4858;
+  font-weight: 700;
+}
+
+.active {
   background-color: #a5796d;
 }
-.active p{
+
+.active p {
   color: #2f4858 !important;
   font-weight: 700;
 }
+
+.app-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  /* Adjust sidebar and main content for smaller screens */
+  .sidebar {
+    width: 100%;
+    left: -100vw;
+    /* top: 100%; */
+    z-index: 998;
+    height: 100vh;
+    gap: 30px;
+    transition: .8s;
+    overflow-y: scroll;
+  }
+  .sidebar.active_nav {
+    left: 0;
+  }
+
+  .main-content {
+    height: 100%;
+    width: 100vw;
+  }
+}
+
+/* Add more media queries as needed for different screen sizes */

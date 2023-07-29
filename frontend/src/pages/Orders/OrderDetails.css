@@ -62,3 +62,16 @@
 .item-info p{
     margin: 0px;
 }
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .accordion-content{
+    overflow-x: scroll;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+  .accordion-content div{
+    min-width: fit-content;
+  }
+}

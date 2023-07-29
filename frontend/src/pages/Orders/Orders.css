@@ -47,12 +47,13 @@
 }
 
 .status-box{
-    padding: 12px 0px;
+    padding: 12px 4px;
 }
 
 .status-box input{
     font-size: 16px;
     padding: 8px;
+    border: 1px solid;
 }
 
 /* Filter Buttons */
@@ -60,6 +61,8 @@
 .filter__buttons{
     padding: 2rem 0px;
     display: flex;
+    width: 100%;
+    justify-content: center;
     gap:.5rem;
 }
 
@@ -69,11 +72,25 @@
 }
 
 .filter__buttons input{
-    min-width: 10rem;
+    max-width: 10rem !important;
+    border: 1px solid black;
 }
 
 .filter__buttons .active{
     border: none;
     background-color: var(--secondary-color);
     color: aliceblue;
+}
+
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .orders__container{
+        padding-top: 1.8rem;
+    }
+    .filter__buttons{
+        padding: 0%;
+        flex-wrap: wrap;
+    }
 }

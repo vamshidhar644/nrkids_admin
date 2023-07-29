@@ -5,6 +5,7 @@
 .home__main{
     display: flex;
     min-height: 100vh;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -35,4 +36,10 @@
     margin-block-start: 1em;
     margin: 0px;
     font-weight: 500;
+}
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+   
 }

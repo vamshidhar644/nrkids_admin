@@ -9,7 +9,7 @@ function App() {
   const { user } = UseAuthContext();
 
   return (
-    <div className="App">
+    <div className="App"  basename="nrkids_admin">
       <BrowserRouter>
         <Routes>
           <Route

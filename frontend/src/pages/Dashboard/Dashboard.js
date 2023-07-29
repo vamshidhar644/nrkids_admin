@@ -5,6 +5,7 @@ import Orders from '../Orders/Orders';
 import './Sidenavbar.css';
 import Profile from '../Profile/Profile';
 import Home from '../Home/Home';
+import { HiMenu, HiOutlineMenuAlt2 } from 'react-icons/hi';
 
 const Dashboard = () => {
   const { logout } = useLogout();
@@ -12,29 +13,67 @@ const Dashboard = () => {
     logout();
   };
 
+  const [isActive, setIsActive] = useState(false);
+  const [disableScrolling, setDisableScrolling] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsActive(!isActive);
+    setDisableScrolling(!disableScrolling);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const [path, setPath] = useState('home');
 
   return (
     <div className="app-container">
-      <div className="sidebar">
+      <div className="app__header">
+        {isActive ? (
+          <HiMenu className="nav__icon" id="ham-menu" onClick={toggleNavbar} />
+        ) : (
+          <HiOutlineMenuAlt2
+            className="nav__icon"
+            id="ham-menu"
+            onClick={toggleNavbar}
+          />
+        )}
+      </div>
+      <div className={`sidebar  ${isActive ? 'active_nav' : ''}`}>
+        <div className="app__header">
+          {isActive ? (
+            <HiMenu
+              className="nav__icon"
+              id="ham-menu"
+              onClick={toggleNavbar}
+            />
+          ) : (
+            <HiOutlineMenuAlt2
+              className="nav__icon"
+              id="ham-menu"
+              onClick={toggleNavbar}
+            />
+          )}
+        </div>
         <ul className="list-unstyled">
           <li
             onClick={() => setPath('home')}
             className={`li ${path === 'home' ? 'active' : ''}`}
           >
-            <p>Home</p>
+            <p onClick={toggleNavbar}>Home</p>
           </li>
           <li
             onClick={() => setPath('orders')}
             className={`li ${path === 'orders' ? 'active' : ''}`}
           >
-            <p>Orders</p>
+            <p onClick={toggleNavbar}>Orders</p>
           </li>
           <li
             onClick={() => setPath('profile')}
             className={`li ${path === 'profile' ? 'active' : ''}`}
           >
-            <p>Change Password</p>
+            <p onClick={toggleNavbar}>Change Password</p>
           </li>
           <li onClick={handleClick} className="li">
             <p to="/login">Logout</p>
