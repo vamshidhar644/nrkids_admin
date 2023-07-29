@@ -32,3 +32,17 @@
     height: 2.6rem;
     font-size: 18px;
   }
+
+
+  
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .change__password{
+        width: 90% !important;
+        padding: 2rem;
+    }
+    .change_password__row{
+        flex-direction: column;
+    }
+}

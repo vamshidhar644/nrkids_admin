@@ -9,11 +9,11 @@ function App() {
   const { user } = UseAuthContext();
 
   return (
-    <div className="App"  basename="nrkids_admin">
-      <BrowserRouter>
+    <div className="App">
+      <BrowserRouter basename="nrkids_admin">
         <Routes>
           <Route
-            path="/" 
+            path="/"
             element={user ? <Dashboard /> : <Navigate to="/login" />}
           />
           <Route

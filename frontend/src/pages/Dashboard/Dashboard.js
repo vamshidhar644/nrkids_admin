@@ -6,8 +6,10 @@ import './Sidenavbar.css';
 import Profile from '../Profile/Profile';
 import Home from '../Home/Home';
 import { HiMenu, HiOutlineMenuAlt2 } from 'react-icons/hi';
+import { UseAuthContext } from '../../hooks/useAuthContext';
 
 const Dashboard = () => {
+  const { user } = UseAuthContext();
   const { logout } = useLogout();
   const handleClick = () => {
     logout();
@@ -39,6 +41,9 @@ const Dashboard = () => {
             onClick={toggleNavbar}
           />
         )}
+        <div className="user__name">
+          <p>{user.firstName}</p>
+        </div>
       </div>
       <div className={`sidebar  ${isActive ? 'active_nav' : ''}`}>
         <div className="app__header">
@@ -55,8 +60,14 @@ const Dashboard = () => {
               onClick={toggleNavbar}
             />
           )}
+          <div className="user__name">
+            <p>{user.firstName}</p>
+          </div>
         </div>
         <ul className="list-unstyled">
+          <li className="user__name">
+            <p>{user.firstName}</p>
+          </li>
           <li
             onClick={() => setPath('home')}
             className={`li ${path === 'home' ? 'active' : ''}`}

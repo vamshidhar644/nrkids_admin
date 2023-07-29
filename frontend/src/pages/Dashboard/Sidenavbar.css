@@ -71,6 +71,9 @@
     height: 100%;
     width: 100vw;
   }
+  .list-unstyled .user__name{
+    display: none;
+  }
 }
 
 /* Add more media queries as needed for different screen sizes */

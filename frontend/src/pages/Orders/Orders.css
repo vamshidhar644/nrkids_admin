@@ -68,12 +68,14 @@
 
 .filter__buttons button{
     padding: 12px 24px;
-    min-width: 10rem;
+    min-width: max-content;
+    font-family: 'Poppins';
 }
 
 .filter__buttons input{
-    max-width: 10rem !important;
+    min-width: max-content;
     border: 1px solid black;
+    font-family: 'Poppins';
 }
 
 .filter__buttons .active{

@@ -18,7 +18,7 @@ const router = express.Router();
 
 // login / signup route
 router.post('/login', loginUser);
-router.post('/signup', requireAuth, signupUser);
+router.post('/signup', signupUser);
 router.post('/changepass/:adminId', requireAuth, changepass);
 
 // Orders
